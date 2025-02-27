@@ -38,7 +38,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define RGBLED_NUM 46 // LEDの個数
 // #define RGBLED_SPLIT { 24, 22 } // (分割キーボードの場合)左右それぞれに実装したLEDの個数
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 3
+// #define DYNAMIC_KEYMAP_LAYER_COUNT 3
 
 #define TAP_CODE_DELAY 5
 
