@@ -34,7 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #define RGBLIGHT_LAYERS
-#define RGBLIGHT_MAX_LAYERS 4
+// #define RGBLIGHT_MAX_LAYERS 3
 // #define RGBLED_NUM 46 // LEDの個数
 // #define RGBLED_SPLIT { 24, 22 } // (分割キーボードの場合)左右それぞれに実装したLEDの個数
 
