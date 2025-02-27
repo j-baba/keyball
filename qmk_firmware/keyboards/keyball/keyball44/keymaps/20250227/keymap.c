@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [3] = LAYOUT_universal(
-    RGB_TOG  , AML_TO   , AML_I50  , AML_D50  , LAY_TOG  , _______  ,                                        RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
+    RGB_TOG  , AML_TO   , AML_I50  , AML_D50  , _______  , _______  ,                                        RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
     RGB_MOD  , RGB_HUI  , RGB_SAI  , RGB_VAI  , _______  , SCRL_DVI ,                                        RGB_M_X  , RGB_M_G  , RGB_M_T  , RGB_M_TW , _______  , _______  ,
     RGB_RMOD , RGB_HUD  , RGB_SAD  , RGB_VAD  , _______  , SCRL_DVD ,                                        CPI_D1K  , CPI_D100 , CPI_I100 , CPI_I1K  , _______  , KBC_SAVE ,
                   QK_BOOT  , KBC_RST  , _______  ,        _______  , _______  ,                   _______  , _______  , _______       , KBC_RST  , QK_BOOT
@@ -56,19 +56,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
     // Auto enable scroll mode when the highest layer is 3
     keyball_set_scroll_mode(get_highest_layer(state) == 3);
-    change_layer_led_color(state);
-    return state;
-}
 
-// 切り替え処理
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        #ifdef LAYER_LED_ENABLE
-        case LAY_TOG: toggle_layer_led(record->event.pressed); return true;
-        #endif
-        default: break;
+    // LOWER + RAISE = ADJUST のようなTri Layersを使う場合
+    // これを先に書いておかないと3の色がおかしくなる
+    state = update_tri_layer_state(state, 1, 2, 3);
+
+    uint8_t layer = biton32(state);
+    switch (layer) {
+        case 0:
+            rgblight_sethsv(HSV_OFF);
+            break;
+        case 1:
+            rgblight_sethsv(HSV_GREEN);
+            break;
+        case 2:
+            rgblight_sethsv(HSV_YELLOW);
+            break;
+        case 3:
+            rgblight_sethsv(HSV_RED);
+            break;
     }
-    return true;
+
+    return state;
 }
 
 #ifdef OLED_ENABLE
