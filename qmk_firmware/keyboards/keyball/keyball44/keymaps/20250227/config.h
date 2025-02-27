@@ -33,6 +33,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#    define RGBLIGHT_EFFECT_TWINKLE
 #endif
 
+#define RGBLIGHT_LAYERS
+#define RGBLIGHT_MAX_LAYERS 3
+// #define RGBLED_NUM 46 // LEDの個数
+// #define RGBLED_SPLIT { 24, 22 } // (分割キーボードの場合)左右それぞれに実装したLEDの個数
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 3
+
 #define TAP_CODE_DELAY 5
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
