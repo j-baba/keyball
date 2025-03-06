@@ -117,6 +117,7 @@ void oledkit_render_info_user(void) {
 #endif
 
 #ifdef COMBO_ENABLE
+/*
 // コンボに使用するキーの定義
 enum combo_events {
   COMBO_IMEOFF,  // F + G を IMEOFF にする
@@ -145,4 +146,23 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_HOME] = COMBO(home_combo, KC_HOME),
   [COMBO_END] = COMBO(end_combo, KC_END),
 };
+*/
+
+typedef const uint16_t comb_keys_t[];
+static PROGMEM comb_keys_t
+  comb_keys_imeoff = {KC_F, KC_G, COMBO_END},
+  comb_keys_imeon = {KC_H, KC_J, COMBO_END},
+  comb_keys_mbtn1 = {KC_J, KC_K, COMBO_END},
+  comb_keys_mbtn2 = {KC_K, KC_L, COMBO_END},
+  comb_keys_home = {KC_V, KC_B, COMBO_END},
+  comb_keys_end = {KC_N, KC_M, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+  COMBO( comb_keys_imeoff, KC_INTERNATIONAL_5 ),
+  COMBO( comb_keys_imeon, KC_INTERNATIONAL_4 ),
+  COMBO( comb_keys_mbtn1, MS_BTN1 ),
+  COMBO( comb_keys_mbtn2, MS_BTN2 ),
+  COMBO( comb_keys_home, KC_HOME ),
+  COMBO( comb_keys_end, KC_END ),
+};
+
 #endif
