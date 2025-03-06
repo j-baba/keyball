@@ -159,8 +159,8 @@ static PROGMEM comb_keys_t
 combo_t key_combos[COMBO_COUNT] = {
   COMBO( comb_keys_imeoff, KC_INTERNATIONAL_5 ),
   COMBO( comb_keys_imeon, KC_INTERNATIONAL_4 ),
-  COMBO( comb_keys_mbtn1, MS_BTN1 ),
-  COMBO( comb_keys_mbtn2, MS_BTN2 ),
+  COMBO( comb_keys_mbtn1, QK_MOUSE_BUTTON_1 ),
+  COMBO( comb_keys_mbtn2, QK_MOUSE_BUTTON_2 ),
   COMBO( comb_keys_home, KC_HOME ),
   COMBO( comb_keys_end, KC_END ),
 };
