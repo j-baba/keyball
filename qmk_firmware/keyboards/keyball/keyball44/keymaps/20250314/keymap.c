@@ -125,8 +125,8 @@ static PROGMEM comb_keys_t
   comb_keys_mbtn1 = {KC_J, KC_K, COMBO_END},
   comb_keys_mbtn2 = {KC_K, KC_L, COMBO_END},
   comb_keys_home = {KC_V, KC_B, COMBO_END},
-  comb_keys_end = {KC_N, KC_M, COMBO_END};
-  comb_keys_left = {KC_UP, KC_DOT, COMBO_END};
+  comb_keys_end = {KC_N, KC_M, COMBO_END},
+  comb_keys_left = {KC_UP, KC_DOT, COMBO_END},
   comb_keys_right = {KC_UP, KC_SLASH, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
   COMBO( comb_keys_imeoff, KC_INTERNATIONAL_5 ),
